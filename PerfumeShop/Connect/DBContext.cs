@@ -4,11 +4,8 @@ namespace PerfumeShop.Models
 {
     public class DBContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer();
-        }
-
+        public DBContext() { }
+        public DBContext(DbContextOptions<DBContext> options):base(options) { }
         public DbSet<ProductTypes> ProductTypes { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<Fragrant> Fragrant { get; set; }
