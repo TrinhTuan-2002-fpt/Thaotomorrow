@@ -8,65 +8,65 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PerfumeShop
 build_property.RootNamespace = PerfumeShop
-build_property.ProjectDir = D:\c#5\Assngment\Thaotomorrow\PerfumeShop\
+build_property.ProjectDir = D:\c#5\Thaotomorrow\PerfumeShop\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\c#5\Assngment\Thaotomorrow\PerfumeShop
+build_property.MSBuildProjectDirectory = D:\c#5\Thaotomorrow\PerfumeShop
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Areas/Admin/Views/Home/Index.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Areas/Admin/Views/Shared/Error.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Areas/Admin/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+[D:/c\#5/Thaotomorrow/PerfumeShop/Areas/Admin/Views/Shared/_NavPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9OYXZQYXJ0aWFsVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Areas/Admin/Views/Shared/_NavStartView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9OYXZTdGFydFZpZXcuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Areas/Admin/Views/_ViewImports.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Areas/Admin/Views/_ViewStart.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Views/Home/Index.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Views/Home/Privacy.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Views/Shared/Error.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Views/_ViewImports.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Views/_ViewStart.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/c\#5/Assngment/Thaotomorrow/PerfumeShop/Views/Shared/_Layout.cshtml]
+[D:/c\#5/Thaotomorrow/PerfumeShop/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-2juzqooy3m
+
+[D:/c\#5/Thaotomorrow/PerfumeShop/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-v3r0ocr0br
