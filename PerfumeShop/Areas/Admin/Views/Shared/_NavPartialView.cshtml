@@ -43,16 +43,23 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a>Danh sách sản phẩm</a>
+                        <a  asp-controller="ProductType" asp-action="Index">Danh sách sản phẩm</a>
                     </li>
                     <li>
                         <a>Lọc Sản Phẩm</a>
                     </li>
                     <li>
-                        <a>Loại Mùi Hương</a>
-                    </li>
-                    <li>
-                        <a>Loại Sản Phẩm</a>
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <span class="title">Quản lý mùi hương</span>
+                            <span class="arrow">
+                                <i class="arrow-icon"></i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a>danh sách mùi hương</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </li>

@@ -6,6 +6,6 @@ namespace PerfumeShop.Models
     {
         public int AddressId { get; set; }
         public string City { get; set; }
-        public virtual ICollection<Customers> Customers { get; set; }
+        public virtual ICollection<Customers>? Customers { get; set; }
     }
 }

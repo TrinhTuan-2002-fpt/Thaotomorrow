@@ -6,8 +6,8 @@
         public double Payment { get; set; }
         public int Status { get; set; }
         public int CartId { get; set; }
-        public Carts Carts { get; set; }
+        public Carts? Carts { get; set; }
         public int ProductId { get; set; }
-        public Products Products { get; set; }
+        public Products? Products { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ktckQ8tcJjBcu0nSGZq2uDc47lJMY7su/0Y/B1qAzdk=",
+  "Hash": "I3H0lR9zGH3m+Y/lGnG587/pv+Riut6qaCvn/DF1E+A=",
   "Source": "PerfumeShop",
   "BasePath": "_content/PerfumeShop",
   "Mode": "Default",
@@ -17712,6 +17712,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\c#5\\Thaotomorrow\\PerfumeShop\\wwwroot\\Images\\Logo\\Thaotomorrow.jpg",
+      "SourceId": "PerfumeShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\c#5\\Thaotomorrow\\PerfumeShop\\wwwroot\\",
+      "BasePath": "_content/PerfumeShop",
+      "RelativePath": "Images/Logo/Thaotomorrow.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Logo\\Thaotomorrow.jpg"
     },
     {
       "Identity": "D:\\c#5\\Thaotomorrow\\PerfumeShop\\wwwroot\\js\\site.js",

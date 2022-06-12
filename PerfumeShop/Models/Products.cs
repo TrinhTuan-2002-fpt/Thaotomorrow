@@ -16,10 +16,10 @@ namespace PerfumeShop.Models
         public string DebutYear { get; set; }
         public string? Note { get; set; }
         public int? Status { get; set; }
-        public ProductTypes ProductType { get; set; }
+        public ProductTypes? ProductType { get; set; }
         public int TypeId { get; set; }
-        public Fragrant Fragrant { get; set; }
+        public Fragrant? Fragrant { get; set; }
         public int FragrantId { get; set; }
-        public virtual ICollection<CartDetails> CartDetails { get; set; }
+        public virtual ICollection<CartDetails>? CartDetails { get; set; }
     }
 }

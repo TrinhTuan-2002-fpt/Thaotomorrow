@@ -10,7 +10,7 @@
         public string PhoneNumber { get; set; }
         public int Age { get; set; }
         public int Status { get; set; }
-        public Roles Roles { get; set; }
+        public Roles? Roles { get; set; }
         public int RoleId { get; set; }
     }
 }

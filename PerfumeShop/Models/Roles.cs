@@ -6,6 +6,6 @@ namespace PerfumeShop.Models
     {
         public int RoleId { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Accounts> Account { get; set; }
+        public virtual ICollection<Accounts>? Account { get; set; }
     }
 }
