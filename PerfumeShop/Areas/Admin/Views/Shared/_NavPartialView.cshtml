@@ -1,4 +1,5 @@
-﻿<div class="side-nav">
+﻿@{
+    <div class="side-nav">
     <div class="side-nav-inner">
         <ul class="side-nav-menu scrollable">
             <li class="nav-item dropdown open">
@@ -21,10 +22,10 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a>Danh sách tài Khoản</a>
+                        <a asp-area="Admin" asp-controller="Accounts" asp-action="Index">Danh sách tài Khoản</a>
                     </li>
                     <li>
-                        <a asp-area="Admin" asp-controller="" asp-action="Index">Loại tài khoản</a>
+                        <a asp-area="Admin" asp-controller="Roles" asp-action="Index">Loại tài khoản</a>
                     </li>
                     <li>
                         <a>Lọc tài khoản</a>
@@ -120,3 +121,4 @@
         </ul>
     </div>
 </div>
+}
