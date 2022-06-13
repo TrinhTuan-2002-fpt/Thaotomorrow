@@ -1,8 +1,63 @@
-﻿@{
+﻿@model PerfumeShop.Models.Products
+@{
     ViewData["Title"] = "Home Page";
+    var Name = ViewData["Email"] as string;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="main-content pt-5">
+    <div class="swiper-container main-slider-2 swiper-arrow with-bg_white">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide animation-style-01">
+                <div class="slide-inner bg-height" data-bg-image="Images/ImgProduct/Chanel/8848319447070.jpg">
+                    <div class="container">
+                        <div class="slide-content">
+                            <h2 class="title font-weight-bold mb-4">Perfume - Shop <br> Products</h2>
+                            <p class="short-desc different-width mb-9">Best deal products 100% natural healthy scent for your life</p>
+                            <div class="button-wrap">
+                                <a class="btn btn-custom-size lg-size btn-primary btn-white-hover rounded-0" href="">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide animation-style-01">
+                <div class="slide-inner bg-height" data-bg-image="Images/ImgProduct/Dior/1.jpg ">
+                    <div class="container">
+                        <div class="slide-content">
+                            <h2 class="title font-weight-bold mb-4">Perfume - Shop <br> Products</h2>
+                            <p class="short-desc different-width mb-9">Best deal products 100% natural healthy scent for your life</p>
+                            <div class="button-wrap">
+                                <a class="btn btn-custom-size lg-size btn-primary btn-white-hover rounded-0" href="">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination with-bg d-md-none"></div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="text-center">Hàng Mới Về</h3>
+                    <div class="tab-content text-charcoal pt-8">
+                        <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
+                            <div class="product-grid-view row">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    function show() {
+        alert('Thêm Vào Giỏ Hàng Thành Công');
+    }
+</script>

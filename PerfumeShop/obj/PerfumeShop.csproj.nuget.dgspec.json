@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {}
+    "D:\\c#5\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {}
   },
   "projects": {
-    "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {
+    "D:\\c#5\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+        "projectUniqueName": "D:\\c#5\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
         "projectName": "PerfumeShop",
-        "projectPath": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\obj\\",
+        "projectPath": "D:\\c#5\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+        "packagesPath": "C:\\Users\\trinh\\.nuget\\packages\\",
+        "outputPath": "D:\\c#5\\Thaotomorrow\\PerfumeShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\trinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
