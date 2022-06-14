@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+	var message = ViewData["Erorr"] as string;
+}
+<main class="main-content">
+            <div class="breadcrumb-area mt-5">
+                <div class="container h-100">
+                    <div class="row h-100">
+                        <div class="col-lg-12">
+                            <div class="breadcrumb-item">
+                                <h1 class="breadcrumb-heading">Login</h1>
+                                <ul>
+                                    <li>
+                                        <a asp-controller="Home" asp-action="Index">Home <i class="pe-7s-angle-right"></i></a>
+                                    </li>
+                                    <li class="text-danger">Login</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 mb-5">
+                <div class="container">
+	                <div class="row">
+						<div class="col-lg-3"></div>
+		                <div class="col-lg-6">
+							@if (message != null)
+							{
+								<h5 class="alert-danger">@message</h5>
+							}
+			                <form asp-action="Login" method="post">
+				                <div class="login-form">
+					                <div class="row">
+						                <div class="col-lg-12">
+							                <label>Email Address*</label>
+							                <input type="email" name="email" placeholder="Email Address">
+						                </div>
+						                <div class="col-lg-12">
+							                <label>Password</label>
+							                <input type="password" name="password" placeholder="Password">
+						                </div>
+						                <div class="col-md-8">
+							                
+						                </div>
+						                <div class="col-md-4 pt-1 mt-md-0">
+							                <div class="forgotton-password_info">
+								                <a href="#"> Forgotten pasword?</a>
+							                </div>
+						                </div>
+						                <div class="col-lg-12 pt-5">
+							                <button type="submit" class="btn btn-primary-hover rounded form-control" style="background-color: #436EEE; height: 45px; color: white">Log In</button>
+						                </div>
+						                <a asp-action="" class="text-center mt-1 text-center" style="color: blue">
+							                Register now?
+						                </a>
+					                </div>
+				                </div>
+			                </form>
+		                </div>
+		                <div class="col-lg-3"></div>
+	                </div>
+                </div>
+            </div>
+        </main>

@@ -1,6 +1,6 @@
 ﻿
 @{
-    var Name = ViewData["Email"] as string;
+    var Name = ViewData["name"] as string;
 }
 
 <header class="main-header_area position-relative">
@@ -33,7 +33,7 @@
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButton">
                                         @if (Name == null)
                                         {
-                                            <li><a class="dropdown-item" asp-controller="Home" asp-action="">Login</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Customers" asp-action="Login">Login</a></li>
                                             <li><a class="dropdown-item" asp-controller="Home" asp-action="">Register</a></li>
                                             <hr class="col-10 offset-1"/>
                                             <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a></li>
@@ -47,7 +47,7 @@
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButton">
                                         @if (Name != null)
                                         {
-                                            <li><a class="dropdown-item" asp-controller="Home" asp-action="">Logout</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Customers" asp-action="Logout">Logout</a></li>
                                         }
                                     </ul>
                                 </li>

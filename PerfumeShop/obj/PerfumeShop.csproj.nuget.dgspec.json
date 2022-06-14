@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {}
+    "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {}
   },
   "projects": {
-    "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {
+    "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+        "projectUniqueName": "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
         "projectName": "PerfumeShop",
-        "projectPath": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\obj\\",
+        "projectPath": "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+        "packagesPath": "C:\\Users\\LuTrongTuan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Thaotomorrow\\PerfumeShop\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LuTrongTuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.5, )"
@@ -91,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
