@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PerfumeShop.Models.Address>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<div>
+    <nav class="breadcrumb breadcrumb-dash">
+        <a class="breadcrumb-item" asp-area="Admin" asp-controller="Home" asp-action="Index"><i class="anticon anticon-home m-r-5"></i> Home</a>
+        <span class="breadcrumb-item active">Danh sách tỉnh thành</span>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <div class="row m-b-30">
+                <div class="col-lg-6 text-left">
+                    <a class="btn btn-primary" asp-controller="Addresses" asp-action="Create">
+                        <i class="anticon anticon-plus-circle m-r-5"></i>
+                        <span>Add Address</span>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <input type="text" placeholder="Tìm kiếm" class="form-control"/>
+                        </div>
+                        <button name="" type="submit" class="btn btn-secondary"><i class="anticon anticon-search"></i> Search</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                <a class="btn btn-primary btn-tone m-r-5" asp-action="Edit" asp-route-id="@item.AddressId">Edit</a>
+                <a class="btn btn-secondary btn-tone m-r-5" asp-action="Details" asp-route-id="@item.AddressId">Details</a>
+                <a class="btn btn-danger btn-tone m-r-5" asp-action="Delete" asp-route-id="@item.AddressId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

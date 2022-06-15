@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\NET\\C#5\\Ass\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {}
+    "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {}
   },
   "projects": {
-    "E:\\NET\\C#5\\Ass\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {
+    "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\NET\\C#5\\Ass\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+        "projectUniqueName": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
         "projectName": "PerfumeShop",
-        "projectPath": "E:\\NET\\C#5\\Ass\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+        "projectPath": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\NET\\C#5\\Ass\\Thaotomorrow\\PerfumeShop\\obj\\",
+        "outputPath": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,23 +46,23 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.5, )"
+              "version": "[6.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.5, )"
+              "version": "[6.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.5, )"
+              "version": "[6.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.5, )"
+              "version": "[6.0.6, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -74,7 +74,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.3.0, )"
+              "version": "[6.3.1, )"
             }
           },
           "imports": [
