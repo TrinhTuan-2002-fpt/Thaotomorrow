@@ -14,10 +14,11 @@ namespace PerfumeShop.Controllers
     public class ApiCustomersController : ControllerBase
     {
         private readonly DBContext _context;
-
+        
         public ApiCustomersController(DBContext context)
         {
             _context = context;
+            
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customers>>> GetCustomers()
