@@ -1584,7 +1584,12 @@ E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win-x64\native
 E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win-arm\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
 E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win-arm64\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
+E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\obj\Debug\net6.0\PerfumeShop.csproj.AssemblyReference.cache
 E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\obj\Debug\net6.0\PerfumeShop.GeneratedMSBuildEditorConfig.editorconfig
 E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\obj\Debug\net6.0\PerfumeShop.AssemblyInfoInputs.cache
@@ -1606,8 +1611,3 @@ E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\obj\Debug\net6.0\refint\PerfumeShop.dll
 E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\obj\Debug\net6.0\PerfumeShop.pdb
 E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\obj\Debug\net6.0\PerfumeShop.genruntimeconfig.cache
 E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\obj\Debug\net6.0\ref\PerfumeShop.dll
-E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
-E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
-E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
-E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
-E:\NET\C#5\Ass\Thaotomorrow\PerfumeShop\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
