@@ -19,58 +19,26 @@ namespace PerfumeShop.Controllers
         {
             _context = context;
         }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Customers>>> GetCustomers()
+        {
+            if (_context.Customers == null)
+            {
+                return NotFound();
+            }
+            return await _context.Customers.ToListAsync();
+        }
+        [HttpPost]
+        public async Task<ActionResult<Customers>> PostCustomers(Customers customers)
+        {
+            if (_context.Customers == null)
+            {
+                return Problem("Entity set 'DBContext.Customers'  is null.");
+            }
+            _context.Customers.Add(customers);
+            await _context.SaveChangesAsync();
 
-        ////[HttpGet]
-        ////public Task<IActionResult> Login(string email, string password)
-        ////{
-            
-        ////}
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutCustomers(int id, Customers customers)
-        //{
-        //    if (id != customers.CustomerId)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _context.Entry(customers).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!CustomersExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
-
-        //[HttpPost]
-        //public async Task<ActionResult<Customers>> PostCustomers(Customers customers)
-        //{
-        //  if (_context.Customers == null)
-        //  {
-        //      return Problem("Entity set 'DBContext.Customers'  is null.");
-        //  }
-        //  _context.Customers.Add(customers);
-        //  await _context.SaveChangesAsync();
-
-        //  return CreatedAtAction("GetCustomers", new { id = customers.CustomerId }, customers);
-        //}
-
-
-        //private bool CustomersExists(int id)
-        //{
-        //    return (_context.Customers?.Any(e => e.CustomerId == id)).GetValueOrDefault();
-        //}
+            return CreatedAtAction("GetCustomers", new { id = customers.CustomerId }, customers);
+        }
     }
 }
