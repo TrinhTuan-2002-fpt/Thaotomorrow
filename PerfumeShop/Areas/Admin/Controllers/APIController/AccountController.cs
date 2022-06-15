@@ -20,15 +20,22 @@ namespace PerfumeShop.Areas.Admin.Controllers
             _context = context;
         }
 
+        // [HttpGet("{name}")]
+        // public List<Accounts> Search(string? name)
+        // {
+        //     List<Accounts> accounts = _context.Accounts.Where(c => c.Name == name).ToList();
+        //     return accounts;
+        // }
+
         // GET: api/Account
         [HttpGet]
         [Route("Get-All")]
         public async Task<ActionResult<IEnumerable<Accounts>>> GetAccounts()
         {
-          if (_context.Accounts == null)
-          {
-              return NotFound();
-          }
+            if (_context.Accounts == null)
+            {
+                return NotFound();
+            }
             return await _context.Accounts.ToListAsync();
         }
 
@@ -36,10 +43,10 @@ namespace PerfumeShop.Areas.Admin.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Accounts>> GetAccounts(int id)
         {
-          if (_context.Accounts == null)
-          {
-              return NotFound();
-          }
+            if (_context.Accounts == null)
+            {
+                return NotFound();
+            }
             var accounts = await _context.Accounts.FindAsync(id);
 
             if (accounts == null)

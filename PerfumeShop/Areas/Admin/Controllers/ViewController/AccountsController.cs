@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using NuGet.Protocol;
 using PerfumeShop.Models;
 
 namespace PerfumeShop.Areas.Admin.ControllersView
@@ -23,14 +24,19 @@ namespace PerfumeShop.Areas.Admin.ControllersView
             _context = context;
         }
 
+        // public async Task<IActionResult> Search(string name, Accounts accounts)
+        // {
+        //     
+        // }
+
         // GET: Admin/Accounts
         public async Task<IActionResult> Index()
         {
             ViewData["Email"] = HttpContext.Session.GetString("Email");
-
+            
             var jsonConnect = client.GetAsync("api/Account/Get-All").Result;
             string jsonData = jsonConnect.Content.ReadAsStringAsync().Result;
-
+            
             //Lay list tu API
             var model = JsonConvert.DeserializeObject<List<Accounts>>(jsonData);
             return View(model);
@@ -74,8 +80,6 @@ namespace PerfumeShop.Areas.Admin.ControllersView
         {
             if (ModelState.IsValid)
             {
-                // _context.Add(accounts);
-                // await _context.SaveChangesAsync();
                 var myContent = JsonConvert.SerializeObject(accounts);
                 var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
                 var byContent = new ByteArrayContent(buffer);
