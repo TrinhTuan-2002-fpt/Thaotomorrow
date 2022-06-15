@@ -69,10 +69,13 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a>Danh sách khách hàng</a>
+                        <a asp-area="Admin" asp-controller="Customers" asp-action="Index">Danh sách khách hàng</a>
                     </li>
                     <li>
                         <a>Lọc khách Hàng</a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Addresses" asp-action="Index">Tỉnh Thành</a>
                     </li>
                 </ul>
             </li>
