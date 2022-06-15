@@ -19,6 +19,8 @@ namespace PerfumeShop.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             var jsonContent = await client.GetAsync("api/ApiShippers/get-list-shipper");
             var jsonData = await jsonContent.Content.ReadAsStringAsync();
             var model = JsonConvert.DeserializeObject<List<Shippers>>(jsonData);
@@ -27,6 +29,8 @@ namespace PerfumeShop.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             return View();
         }
         [HttpPost]
@@ -46,6 +50,8 @@ namespace PerfumeShop.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             if (id == null || _context.Shippers == null)
             {
                 return NotFound();
@@ -89,6 +95,8 @@ namespace PerfumeShop.Areas.Admin.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             if (id == null || _context.Shippers == null)
             {
                 return NotFound();
@@ -106,6 +114,8 @@ namespace PerfumeShop.Areas.Admin.Controllers
 
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             if (id == null || _context.Shippers == null)
             {
                 return NotFound();

@@ -26,8 +26,8 @@ namespace PerfumeShop.Areas.Admin.ControllersView
         // GET: Admin/Roles
         public async Task<IActionResult> Index()
         {
-            // HttpClient client = new HttpClient();
-            // client.BaseAddress = new Uri("https://localhost:7015/");
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             var jsonConnect = client.GetAsync("api/Role/API-Get-List-Roles").Result;
             string jsonData = jsonConnect.Content.ReadAsStringAsync().Result;
 
@@ -39,6 +39,8 @@ namespace PerfumeShop.Areas.Admin.ControllersView
         // GET: Admin/Roles/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             if (id == null || _context.Roles == null)
             {
                 return NotFound();
@@ -57,6 +59,8 @@ namespace PerfumeShop.Areas.Admin.ControllersView
         // GET: Admin/Roles/Create
         public IActionResult Create()
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             return View();
         }
 
@@ -82,6 +86,8 @@ namespace PerfumeShop.Areas.Admin.ControllersView
         // GET: Admin/Roles/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             if (id == null || _context.Roles == null)
             {
                 return NotFound();
@@ -134,6 +140,8 @@ namespace PerfumeShop.Areas.Admin.ControllersView
         // GET: Admin/Roles/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             if (id == null || _context.Roles == null)
             {
                 return NotFound();
