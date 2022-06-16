@@ -17,10 +17,10 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         ViewData["name"] = HttpContext.Session.GetString("name");
-        // ViewData["ProductType"] = _context.ProductTypes.ToList();
-        // ViewData["Product"] = _context.Products.ToList();
+        ViewData["ProductType"] = _context.ProductTypes.ToList();
+        ViewData["Product"] = _context.Products.ToList();
         // ViewData["Cart"] = _context.Orders.ToList();
-        return View();
+        return View(_context.Products);
     }
     public IActionResult Contact()
     {
