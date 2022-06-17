@@ -20,13 +20,34 @@ namespace PerfumeShop.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customers>>> GetCustomers()
+        [Route("login")]
+        public async Task<ActionResult<Customers>> Login(string email, string password)
         {
             if (_context.Customers == null)
             {
                 return NotFound();
             }
-            return await _context.Customers.ToListAsync();
+
+            if (String.IsNullOrEmpty(email) && String.IsNullOrEmpty(password))
+            {
+                return Problem("Email hoặc mật khẩu bị rỗng");
+            }
+
+            try
+            {
+                var info = await _context.Customers.FirstOrDefaultAsync(c =>
+                    c.Email == email && c.Password == password);
+                if (info == null)
+                {
+                    return NotFound("Không tìm thấy");
+                }
+
+                return info;
+            }
+            catch (Exception e)
+            {
+                return Problem("erorr");
+            }
         }
         [HttpPost]
         public async Task<ActionResult<Customers>> PostCustomers(Customers customers)

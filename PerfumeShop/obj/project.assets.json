@@ -9991,19 +9991,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\LuTrongTuan\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+      "projectUniqueName": "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Dự án\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
       "projectName": "PerfumeShop",
-      "projectPath": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\obj\\",
+      "projectPath": "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Dự án\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+      "packagesPath": "C:\\Users\\LuTrongTuan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Dự án\\Thaotomorrow\\PerfumeShop\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LuTrongTuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10084,7 +10089,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
