@@ -10,12 +10,21 @@ namespace PerfumeShop.Areas.Admin.Controllers
     [Area("Admin")]
     public class ShippersController : Controller
     {
-        HttpClient client = new HttpClient();
+        private HttpClient client;
         private DBContext _context;
         public ShippersController(DBContext context)
         {
+            client = new HttpClient();
             _context = context;
             client.BaseAddress = new System.Uri("https://localhost:7015");
+        }
+        public IActionResult Search(string name)
+        {
+            var jsonContent =  client.GetAsync($"api/ApiShippers/{name}").Result;
+            var jsonData =  jsonContent.Content.ReadAsStringAsync().Result;
+            var model = JsonConvert.DeserializeObject<List<Shippers>>(jsonData);
+            var result = model.Where(c => c.Name == name).ToList();
+            return (IActionResult)result;
         }
         public async Task<IActionResult> Index()
         {

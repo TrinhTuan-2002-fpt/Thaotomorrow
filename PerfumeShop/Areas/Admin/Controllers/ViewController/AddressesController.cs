@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Net.Http.Headers;
+using Newtonsoft.Json;
 using PerfumeShop.Models;
+using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
 
 namespace PerfumeShop.Areas.Admin.Controllers.ViewController
 {
@@ -13,23 +16,30 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
     public class AddressesController : Controller
     {
         private readonly DBContext _context;
+        private readonly HttpClient _client = new HttpClient();
 
         public AddressesController(DBContext context)
         {
             _context = context;
+            _client.BaseAddress = new Uri("https://localhost:7015/");
         }
 
         // GET: Admin/Addresses
         public async Task<IActionResult> Index()
         {
-              return _context.Address != null ? 
-                          View(await _context.Address.ToListAsync()) :
-                          Problem("Entity set 'DBContext.Address'  is null.");
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
+            var jsonContent = await _client.GetAsync("api/APIAddresses/get-Address");
+            var jsonData = await jsonContent.Content.ReadAsStringAsync();
+            var model = JsonConvert.DeserializeObject<List<Address>>(jsonData);
+            return View(model);
         }
 
         // GET: Admin/Addresses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             if (id == null || _context.Address == null)
             {
                 return NotFound();
@@ -48,28 +58,29 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         // GET: Admin/Addresses/Create
         public IActionResult Create()
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
             return View();
         }
-
-        // POST: Admin/Addresses/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AddressId,City")] Address address)
+        public async Task<IActionResult> Create(Address address)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(address);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var myContent = JsonConvert.SerializeObject(address);
+                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                var byContent = new ByteArrayContent(buffer);
+                byContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                await _client.PostAsync("api/APIAddresses/add-address", byContent);
+                return RedirectToAction("Index");
             }
-            return View(address);
+            return View();
         }
 
         // GET: Admin/Addresses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             if (id == null || _context.Address == null)
             {
                 return NotFound();
@@ -83,12 +94,10 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
             return View(address);
         }
 
-        // POST: Admin/Addresses/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AddressId,City")] Address address)
+        public async Task<IActionResult> Edit(int id, Address address)
         {
             if (id != address.AddressId)
             {
@@ -99,7 +108,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
             {
                 try
                 {
-                    _context.Update(address);
+                    await _client.PutAsJsonAsync<Address>($"api/APIAddresses/{id}", address);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -121,6 +130,8 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         // GET: Admin/Addresses/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             if (id == null || _context.Address == null)
             {
                 return NotFound();
@@ -150,7 +161,8 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
             {
                 _context.Address.Remove(address);
             }
-            
+
+            await _client.DeleteAsync($"api/APIAddresses/{id}");
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

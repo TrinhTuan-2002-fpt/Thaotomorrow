@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using PerfumeShop.Models;
 
 namespace PerfumeShop.Areas.Admin.Controllers.ViewController
@@ -13,17 +15,24 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
     public class CustomersController : Controller
     {
         private readonly DBContext _context;
+        private readonly HttpClient _client = new HttpClient();
 
         public CustomersController(DBContext context)
         {
             _context = context;
+            _client.BaseAddress = new Uri("https://localhost:7015/");
         }
 
         // GET: Admin/Customers
         public async Task<IActionResult> Index()
         {
-            var dBContext = _context.Customers.Include(c => c.Address);
-            return View(await dBContext.ToListAsync());
+            var jsonContent = await _client.GetAsync("api/APICustomers/get-Cus");
+            var jsonData = await jsonContent.Content.ReadAsStringAsync();
+
+            var model = JsonConvert.DeserializeObject<List<Customers>>(jsonData);
+
+            ViewData["address"] = new SelectList(_context.Address, "AddressId", "City");
+            return View(model);
         }
 
         // GET: Admin/Customers/Details/5
@@ -46,26 +55,45 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         }
 
         // GET: Admin/Customers/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "AddressId");
+            var responseProductType = await _client.GetAsync("api/APICustomers/get-Cus");
+            var json = await responseProductType.Content.ReadAsStringAsync();
+            var model = JsonConvert.DeserializeObject<IEnumerable<Address>>(json);
+            var data = model.Select(e => new SelectListItem
+            {
+                Text = e.City,
+                Value = e.AddressId.ToString()
+            }).AsEnumerable();
+
+            ViewData["addresses"] = data;
             return View();
         }
-
-        // POST: Admin/Customers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,Name,Email,Password,Gender,PhoneNumber,Status,AddressId")] Customers customers)
+        
+        public async Task<IActionResult> Create(Customers customers)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customers);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var myContent = JsonConvert.SerializeObject(customers);
+                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                var byContent = new ByteArrayContent(buffer);
+                byContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                await _client.PostAsync("api/APICustomers/add-customer", byContent);
+                return RedirectToAction("Index");
             }
-            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "AddressId", customers.AddressId);
+
+            var responseAddress = await _client.GetAsync("api/APICustomers/get-Cus");
+            var json = await responseAddress.Content.ReadAsStringAsync();
+            var model = JsonConvert.DeserializeObject<IEnumerable<Address>>(json);
+            var data = model.Select(e => new SelectListItem
+            {
+                Text = e.City,
+                Value = e.AddressId.ToString()
+            }).AsEnumerable();
+
+            ViewData["addresses"] = data;
+
             return View(customers);
         }
 
@@ -76,33 +104,39 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
             {
                 return NotFound();
             }
+            var responseAddress = await _client.GetAsync("api/APICustomers/get-Cus");
+            var json = await responseAddress.Content.ReadAsStringAsync();
+            var model = JsonConvert.DeserializeObject<IEnumerable<Address>>(json);
+            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "City");
 
             var customers = await _context.Customers.FindAsync(id);
             if (customers == null)
             {
                 return NotFound();
             }
-            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "AddressId", customers.AddressId);
+            
             return View(customers);
         }
 
-        // POST: Admin/Customers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,Name,Email,Password,Gender,PhoneNumber,Status,AddressId")] Customers customers)
+        public async Task<IActionResult> Edit(int id, Customers customers)
         {
             if (id != customers.CustomerId)
             {
                 return NotFound();
             }
+            var responseAddress = await _client.GetAsync("api/APICustomers/get-Cus");
+            var json = await responseAddress.Content.ReadAsStringAsync();
+            var model = JsonConvert.DeserializeObject<IEnumerable<Address>>(json);
+            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "City");
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(customers);
+                    await _client.PutAsJsonAsync<Customers>($"api/APICustomers/{id}", customers);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -130,6 +164,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
                 return NotFound();
             }
 
+            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "City");
             var customers = await _context.Customers
                 .Include(c => c.Address)
                 .FirstOrDefaultAsync(m => m.CustomerId == id);

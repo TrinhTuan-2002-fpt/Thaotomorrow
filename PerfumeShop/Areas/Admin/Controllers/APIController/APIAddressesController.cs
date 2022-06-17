@@ -22,6 +22,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.APIController
 
         // GET: api/APIAddresses
         [HttpGet]
+        [Route("get-Address")]
         public async Task<ActionResult<IEnumerable<Address>>> GetAddress()
         {
           if (_context.Address == null)
@@ -83,6 +84,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.APIController
         // POST: api/APIAddresses
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Route("add-address")]
         public async Task<ActionResult<Address>> PostAddress(Address address)
         {
           if (_context.Address == null)

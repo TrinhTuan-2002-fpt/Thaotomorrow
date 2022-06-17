@@ -20,22 +20,30 @@ namespace PerfumeShop.Areas.Admin.Controllers
         [Route("get-list-shipper")]
         public async Task<ActionResult<IEnumerable<Shippers>>> GetShippers()
         {
-          if (_context.Shippers == null)
-          {
-              return NotFound();
-          }
+            if (_context.Shippers == null)
+            {
+                return NotFound();
+            }
             return await _context.Shippers.ToListAsync();
         }
 
+        [HttpGet]
+        public IActionResult Search(string name)
+        {
+            var result = _context.Shippers.Where(c => c.Name.StartsWith(name) || c.Name == null).ToList();
+            return Ok(result);
+        }
         // GET: api/ApiShippers/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Shippers>> GetShippers(int id)
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Shippers>> GetShippers(string name)
         {
           if (_context.Shippers == null)
           {
               return NotFound();
           }
-            var shippers = await _context.Shippers.FindAsync(id);
+
+          var result = await _context.Shippers.Where(c => c.Name.Contains(name)).ToListAsync();
+            var shippers = await _context.Shippers.FindAsync(result);
 
             if (shippers == null)
             {
