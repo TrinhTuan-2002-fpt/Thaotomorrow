@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sPtv2AYC/5zSfPz2g2Y6WubrK2B1H5yhz1MsbYMcQ7Zu9ecavzAZKY2SOvw/5Hd2kTd4YCLxiGVGDWDBJ8UnpQ==",
+  "dgSpecHash": "f8mrzCx75IcMIg+sIXMUzAP4/ZQ7d2hzCDURPPsYsDMe7GyYczLxeIrle1bSTkX0ZO5B9okeLw45YxCJbE1Plg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\C#105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\Net105C\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

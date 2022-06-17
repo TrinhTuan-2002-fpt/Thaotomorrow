@@ -1,7 +1,7 @@
-﻿@model PerfumeShop.Models.Products
+﻿@model IEnumerable<PerfumeShop.Models.Products>
 @{
     ViewData["Title"] = "Home Page";
-    //var Name = ViewData["Email"] as string;
+    var Name = ViewData["Email"] as string;
 }
 
 <div class="main-content pt-5">
@@ -61,6 +61,49 @@
                     <div class="tab-content text-charcoal pt-8">
                         <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
                             <div class="product-grid-view row">
+                                @if (Model != null && Model.Count() > 0)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <div class="col-lg-3 col-sm-6">
+                                            <div class="product-item">
+                                                <div class="product-img img-zoom-effect">
+                                                    <a href="">
+                                                        <img class="img-full" src="Images/ImgProduct/Chanel/@item.Img" /> 
+                                                    </a>
+                                                    <div class="product-add-action">
+                                                        @* @if (Name != null) *@
+                                                        @* { *@
+                                                        @*     if (item.Amount > 0) *@
+                                                        @*     { *@
+                                                        @*         <ul> *@
+                                                        @*             <li onclick="show()"> *@
+                                                        @*                 <a asp-controller="Home" asp-action="Index" asp-route-name="@Name" asp-route-productId="@item.ProdcutId"> *@
+                                                        @*                     <i class="pe-7s-cart"></i> *@
+                                                        @*                 </a> *@
+                                                        @*             </li> *@
+                                                        @*         </ul> *@
+                                                        @*     } *@
+                                                        @*     else *@
+                                                        @*     { *@
+                                                        @*         <ul><li><a>Hết</a></li></ul> *@
+                                                        @*     } *@
+                                                        @* } *@
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <a class="product-name">@item.Name</a>
+                                                    <div class="price-box pb-1">
+                                                        <span class="new-price">Giá: @item.Price</span>
+                                                    </div>
+                                                    <div class="rating-box">
+                                                        <span>Số Lượng: @item.Amount</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
                             </div>
                         </div>
                     </div>

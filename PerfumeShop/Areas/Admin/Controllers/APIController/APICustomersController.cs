@@ -22,6 +22,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.APIController
 
         // GET: api/APICustomers
         [HttpGet]
+        [Route("get-Cus")]
         public async Task<ActionResult<IEnumerable<Customers>>> GetCustomers()
         {
           if (_context.Customers == null)
@@ -83,6 +84,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.APIController
         // POST: api/APICustomers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Route("add-customer")]
         public async Task<ActionResult<Customers>> PostCustomers(Customers customers)
         {
           if (_context.Customers == null)
