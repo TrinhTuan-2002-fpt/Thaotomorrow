@@ -67,7 +67,7 @@ namespace PerfumeShop.Areas.Admin.ControllersView
         public IActionResult Create()
         {
             ViewData["Email"] = HttpContext.Session.GetString("Email");
-            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleId");
+            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "Name");
             return View();
         }
 
@@ -87,7 +87,7 @@ namespace PerfumeShop.Areas.Admin.ControllersView
                 await client.PostAsync("api/Account/Add-Roles", byContent);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleId", accounts.RoleId);
+            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "Name", accounts.RoleId);
             return View(accounts);
         }
 
@@ -106,7 +106,7 @@ namespace PerfumeShop.Areas.Admin.ControllersView
             {
                 return NotFound();
             }
-            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleId", accounts.RoleId);
+            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "Name", accounts.RoleId);
             return View(accounts);
         }
 

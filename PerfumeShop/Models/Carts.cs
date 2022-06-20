@@ -9,7 +9,8 @@ namespace PerfumeShop.Models
         public DateTime Oderdate {get; set;}
         public DateTime Shipdate {get; set;}
         public string? Note {get; set;}
-
+        public bool Status { get; set; } = false;
+        public double Total { get; set; }
         public Customers? Customers { get; set; }
         public int CustomerId { get; set; }
         public Shippers? Shippers { get; set; }

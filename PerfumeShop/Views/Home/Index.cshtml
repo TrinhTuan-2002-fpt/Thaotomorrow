@@ -1,7 +1,8 @@
-﻿@model IEnumerable<PerfumeShop.Models.Products>
+﻿@using System.Globalization
+@model IEnumerable<PerfumeShop.Models.Products>
 @{
     ViewData["Title"] = "Home Page";
-    var Name = ViewData["Email"] as string;
+    var user = ViewData["idCus"] as string;
 }
 
 <div class="main-content pt-5">
@@ -69,32 +70,22 @@
                                             <div class="product-item">
                                                 <div class="product-img img-zoom-effect">
                                                     <a href="">
-                                                        <img class="img-full" src="Images/ImgProduct/Chanel/@item.Img" /> 
+                                                        <img class="img-full" src="Images/ImgProduct/Chanel/@item.Img" />
                                                     </a>
                                                     <div class="product-add-action">
-                                                        @* @if (Name != null) *@
-                                                        @* { *@
-                                                        @*     if (item.Amount > 0) *@
-                                                        @*     { *@
-                                                        @*         <ul> *@
-                                                        @*             <li onclick="show()"> *@
-                                                        @*                 <a asp-controller="Home" asp-action="Index" asp-route-name="@Name" asp-route-productId="@item.ProdcutId"> *@
-                                                        @*                     <i class="pe-7s-cart"></i> *@
-                                                        @*                 </a> *@
-                                                        @*             </li> *@
-                                                        @*         </ul> *@
-                                                        @*     } *@
-                                                        @*     else *@
-                                                        @*     { *@
-                                                        @*         <ul><li><a>Hết</a></li></ul> *@
-                                                        @*     } *@
-                                                        @* } *@
+                                                        <ul>
+                                                            <li onclick="CheckAdd()">
+                                                                <a asp-controller="Cart" asp-action="AddtoCart" asp-route-id="@item.ProdcutId" asp-route-user="@user"> 
+                                                                    <i class="pe-7s-cart"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                                 <div class="product-content">
                                                     <a class="product-name">@item.Name</a>
                                                     <div class="price-box pb-1">
-                                                        <span class="new-price">Giá: @item.Price</span>
+                                                        <span class="new-price">Giá: @item.Price.ToString("C",CultureInfo.GetCultureInfo("vi-VN"))</span>
                                                     </div>
                                                     <div class="rating-box">
                                                         <span>Số Lượng: @item.Amount</span>
@@ -113,7 +104,7 @@
     </div>
 </div>
 <script>
-    function show() {
-        alert('Thêm Vào Giỏ Hàng Thành Công');
+    function CheckAdd() { 
+        alert('thêm vào giỏ hàng thành công');
     }
 </script>

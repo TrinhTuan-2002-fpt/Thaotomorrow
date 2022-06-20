@@ -66,10 +66,8 @@ namespace PerfumeShop.Areas.Admin.Controllers
             if (ModelState.IsValid)    
             {
                 var myContent = JsonConvert.SerializeObject(productTypes);
-                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
-                var byContent = new ByteArrayContent(buffer);
-                byContent.Headers.ContentType = new MediaTypeHeaderValue("Application/json");
-                await _client.PostAsync("api/APIProductTypes/addSP", byContent);
+                var res = new StringContent(myContent, System.Text.Encoding.UTF8, ("application/json"));
+                await _client.PostAsync("api/APIProductTypes/addSP", res);
 
                 return RedirectToAction(nameof(Index));
             }
