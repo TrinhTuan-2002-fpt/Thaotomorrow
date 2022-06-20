@@ -44,5 +44,26 @@ namespace PerfumeShop.Controllers.ViewController
             return RedirectToAction("ViewCart", "Cart");
 
         }
+        [Route("reduce/{id}")]
+        public async Task<IActionResult> Reduce(int idcart,int id)
+        {
+            var response = await _httpClient.PatchAsync($"api/Cart/{idcart}/items/{id}/reduce", null);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                return NotFound();
+
+            return RedirectToAction("ViewCart", "Cart");
+        }
+
+        [Route("increase/{id}")]
+        public async Task<IActionResult> Increase(int idcart,int id)
+        {
+            var response = await _httpClient.PatchAsync($"api/Cart/{idcart}/items/{id}/increase", null);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                return NotFound();
+
+            return RedirectToAction("ViewCart", "Cart");
+        }
     }
 }

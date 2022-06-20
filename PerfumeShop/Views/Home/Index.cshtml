@@ -74,11 +74,29 @@
                                                     </a>
                                                     <div class="product-add-action">
                                                         <ul>
-                                                            <li onclick="CheckAdd()">
-                                                                <a asp-controller="Cart" asp-action="AddtoCart" asp-route-id="@item.ProdcutId" asp-route-user="@user"> 
-                                                                    <i class="pe-7s-cart"></i>
-                                                                </a>
-                                                            </li>
+                                                            @if (@user == null)
+                                                            {
+                                                                <li>
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-body">
+                                                                                <div class="modal-dialog modal-dialog-centered text-danger ">
+                                                                                    Bạn cần đăng nhập để thêm vào giỏ hàng
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </li>
+                                                            }
+                                                            else
+                                                            {
+                                                                <li onclick="CheckAdd()">
+                                                                    <a asp-controller="Cart" asp-action="AddtoCart" asp-route-id="@item.ProdcutId" asp-route-user="@user">
+                                                                        <i class="pe-7s-cart"></i>
+                                                                    </a>
+                                                                </li>
+                                                            }
                                                         </ul>
                                                     </div>
                                                 </div>

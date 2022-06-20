@@ -1,4 +1,6 @@
-﻿@model PerfumeShop.ModelView.CartModel
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model PerfumeShop.ModelView.CartModel
 @{
     ViewData["Title"] = "Danh Sách Sản Phẩm Trong Giỏ Hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -42,19 +44,40 @@
                                 {
                                     <tbody>
                                     <td>
-                                        <a asp-controller="Cart" asp-action="Remove" asp-route-id="@x.ProductId" asp-route-idcart="@Model.Id">
+                                        <button type="button" class="btn btn-primary-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             <i class="pe-7s-close" title="Remove"></i>
-                                        </a>
+                                        </button>
+                                        
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Xác Nhận Xoá @x.Name</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-danger" asp-controller="Cart" asp-action="Remove" asp-route-id="@x.ProductId" asp-route-idcart="@Model.Id">Xác Nhận</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                     <td>
                                         <img src="~/Images/ImgProduct/Chanel/@x.Image" class="img-thumbnail" width="200px" height="200px" />
                                     </td>
                                     <td>@x.Name</td>
-                                    <td>@x.Price</td>
+                                    <td>@x.Price.ToString("C",CultureInfo.GetCultureInfo("vi-VN"))</td>
                                     <td class="quantity">
-                                        <input  value="@x.Quantity" min="0" max="@x.Max" type="number">
+                                        <div>
+                                            <a class="btn btn-primary-hover fw-bold" asp-controller="Cart"
+                                               asp-action="Reduce" asp-route-id="@x.ProductId" asp-route-idcart="@Model.Id">-</a>
+                                            <input disabled value="@x.Quantity" min="0" max="@x.Max" type="number" />
+                                            <a class="btn btn-primary-hover fw-bold" asp-controller="Cart"
+                                               asp-action="Increase" asp-route-id="@x.ProductId" asp-route-idcart="@Model.Id">+</a>
+                                        </div>
                                     </td>
-                                    <td>@x.Total</td>
+                                    <td>@x.Total.ToString("C",CultureInfo.GetCultureInfo("vi-VN"))</td>
                                     </tbody>
                                 }
                             </table>
@@ -64,9 +87,9 @@
                                 <div class="cart-page-total">
                                     <h2>Thanh Toán Hóa Đơn</h2>
                                     <ul>
-                                        <li>Tổng Tiền: @Model.Total</li>
+                                        <li>Tổng Tiền: @Model.Total.ToString("C",CultureInfo.GetCultureInfo("vi-VN"))</li>
                                     </ul>
-                                    <button type="submit">Thanh Toán</button>
+                                    <button type="button" class="btn btn-primary-hover mt-2">Thanh Toán</button>
                                 </div>
                             </div>
                         </div>

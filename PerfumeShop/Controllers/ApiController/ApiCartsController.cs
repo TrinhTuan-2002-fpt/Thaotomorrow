@@ -89,5 +89,66 @@ namespace PerfumeShop.Controllers.ApiController
 
             return NoContent();
         }
+        [HttpPatch]
+        [Route("{idcart}/items/{id:int}/reduce")]
+        public async Task<IActionResult> ReduceQuantity([FromRoute] int idcart, int id)
+        {
+            var item = await _context.CartDetails.Where(c => c.ProductId == id).FirstOrDefaultAsync();
+
+            if (item == null)
+                return BadRequest();
+
+            var cart = await _context.Carts.Include(e => e.CartDetails)
+                .FirstOrDefaultAsync(e => e.CartId == idcart);
+
+            if (cart == null)
+                return BadRequest();
+
+            var product = await _context.Products.FirstOrDefaultAsync(e => e.ProdcutId == item.ProductId);
+
+            if (product == null)
+                return BadRequest();
+
+            item.Amount--;
+            item.Payment -= product.Price;
+            cart.Total -= product.Price;
+            _context.CartDetails.Update(item);
+            _context.Carts.Update(cart);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        [HttpPatch]
+        [Route("{idcart}/items/{id:int}/increase")]
+        public async Task<IActionResult> IncreaseQuantity([FromRoute] int idcart, int id)
+        {
+            var item = await _context.CartDetails.Where(c => c.ProductId == id).FirstOrDefaultAsync();
+
+            if (item == null)
+                return BadRequest();
+
+            var cart = await _context.Carts.Include(e => e.CartDetails)
+                .FirstOrDefaultAsync(e => e.CartId == idcart);
+
+            if (cart == null)
+                return BadRequest();
+
+            var product = await _context.Products.FirstOrDefaultAsync(e => e.ProdcutId == item.ProductId);
+
+            if (product == null)
+                return BadRequest();
+
+            item.Amount++;
+
+            if (item.Amount > product.Amount)
+                return NoContent();
+
+            item.Payment += product.Price;
+            cart.Total += product.Price;
+            _context.CartDetails.Update(item);
+            _context.Carts.Update(cart);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }
