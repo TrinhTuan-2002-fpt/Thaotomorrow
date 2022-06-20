@@ -1,5 +1,6 @@
 ﻿@{
     var Name = ViewData["name"] as string;
+    var user = ViewData["idCus"] as string;
 }
 
 <header class="main-header_area position-relative">
@@ -35,7 +36,7 @@
                                             <li><a class="dropdown-item" asp-controller="Customers" asp-action="Login">Login</a></li>
                                             <li><a class="dropdown-item" asp-controller="Customers" asp-action="Register">Register</a></li>
                                             <hr class="col-10 offset-1"/>
-                                            <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="Login">Admin</a></li>
+                                            <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a></li>
                                         }
                                     </ul>
                                 </li>

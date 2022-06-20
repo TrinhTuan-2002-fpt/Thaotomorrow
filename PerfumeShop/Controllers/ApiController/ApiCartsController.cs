@@ -28,7 +28,7 @@ namespace PerfumeShop.Controllers.ApiController
             var product = await _context.Products.FindAsync(id);
             var cart = await _context.Carts.
                 Include(c => c.CartDetails)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(c=> c.CustomerId == Convert.ToInt32(user));
             var listShipper = _context.Shippers.Where(c => c.Status == 1).ToList();
             if (cart == null)
                 cart = new Carts();

@@ -18,7 +18,8 @@ namespace PerfumeShop.Controllers.ViewController
        
         public async Task<IActionResult> ViewCart()
         {
-            var jsonConnect = await _httpClient.GetAsync("api/ApiCartDetails");
+            var CusId = HttpContext.Session.GetString("idcus");
+            var jsonConnect = await _httpClient.GetAsync($"api/ApiCartDetails/{CusId}");
             string jsonData = await jsonConnect.Content.ReadAsStringAsync();
             var model = JsonConvert.DeserializeObject<CartModel>(jsonData);
             ViewData["name"] = HttpContext.Session.GetString("name");
@@ -29,6 +30,7 @@ namespace PerfumeShop.Controllers.ViewController
         public async Task<IActionResult> AddtoCart(string user,int id)
         {
             var response = await _httpClient.PostAsync($"api/Cart/{user}/items/{id}", null);
+            var CusId = HttpContext.Session.GetString("idCus");
             if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                 return NotFound();
             return RedirectToAction("ViewCart", "Cart");

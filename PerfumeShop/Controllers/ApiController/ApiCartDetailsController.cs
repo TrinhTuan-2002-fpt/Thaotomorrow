@@ -23,11 +23,13 @@ namespace PerfumeShop.Controllers.ApiController
 
         // GET: api/CartDetails
         [HttpGet]
-        public async Task<IActionResult> GetCartDetails()
+        [Route("{CusId}")]
+        public async Task<IActionResult> GetCartDetails(string? CusId)
         {
             var cart = await _context.Carts.Include(c => c.CartDetails)
                 .ThenInclude(c=>c.Products)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(c=>c.CustomerId == Convert.ToInt32(CusId));
+            if (cart == null) return Ok(new Carts());
             var result = new CartModel
             {
                 Id = cart.CartId,
