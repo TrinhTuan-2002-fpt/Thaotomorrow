@@ -9996,11 +9996,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\c#5\\ass\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+      "projectUniqueName": "D:\\c#5\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
       "projectName": "PerfumeShop",
-      "projectPath": "D:\\c#5\\ass\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+      "projectPath": "D:\\c#5\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
       "packagesPath": "C:\\Users\\trinh\\.nuget\\packages\\",
-      "outputPath": "D:\\c#5\\ass\\Thaotomorrow\\PerfumeShop\\obj\\",
+      "outputPath": "D:\\c#5\\Thaotomorrow\\PerfumeShop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\trinh\\AppData\\Roaming\\NuGet\\NuGet.Config",

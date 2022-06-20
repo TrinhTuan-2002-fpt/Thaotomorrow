@@ -28,11 +28,11 @@ namespace PerfumeShop.Controllers.ApiController
             var product = await _context.Products.FindAsync(id);
             var cart = await _context.Carts.
                 Include(c => c.CartDetails)
-                .FirstOrDefaultAsync(c=> c.CustomerId == Convert.ToInt32(user));
+                .FirstOrDefaultAsync();
             var listShipper = _context.Shippers.Where(c => c.Status == 1).ToList();
             if (cart == null)
                 cart = new Carts();
-            if (product != null) return BadRequest();
+            if (product == null) return BadRequest();
             var Cartdetail = cart.CartDetails?.FirstOrDefault(c => c.ProductId == id);
             if (Cartdetail != null)
             {
@@ -53,6 +53,7 @@ namespace PerfumeShop.Controllers.ApiController
                 {
                     new CartDetails {ProductId = product.ProdcutId, Payment = product.Price, Amount = 1}
                 };
+                cart.Total = product.Price;
                 _context.Carts.Update(cart);
                 await _context.Carts.AddAsync(cart);
                 await _context.SaveChangesAsync();
@@ -66,6 +67,27 @@ namespace PerfumeShop.Controllers.ApiController
             await _context.SaveChangesAsync();
             return NoContent();
         }
+        [HttpDelete]
+        [Route("{idcart}/items/{id:int}")]
+        public async Task<IActionResult> RemoveItem([FromRoute] int idcart, int id)
+        {
+            var item = await _context.CartDetails.Where(c=>c.ProductId == id).FirstOrDefaultAsync();
 
+            if (item == null)
+                return BadRequest();
+
+            var cart = await _context.Carts.FirstOrDefaultAsync(e => e.CartId == idcart);
+
+            if (cart == null)
+                return BadRequest();
+
+            cart.Total -= item.Payment;
+
+            _context.Carts.Update(cart);
+            _context.CartDetails.Remove(item);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

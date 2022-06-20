@@ -33,6 +33,16 @@ namespace PerfumeShop.Controllers.ViewController
                 return NotFound();
             return RedirectToAction("ViewCart", "Cart");
         }
-        
+        [Route("remove/{id}")]
+        public async Task<IActionResult> Remove(int idcart,int id)
+        {
+            var response = await _httpClient.DeleteAsync($"api/Cart/{idcart}/items/{id}");
+
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                return NotFound();
+
+            return RedirectToAction("ViewCart", "Cart");
+
+        }
     }
 }
