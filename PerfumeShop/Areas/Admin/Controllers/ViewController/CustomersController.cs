@@ -26,18 +26,21 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         // GET: Admin/Customers
         public async Task<IActionResult> Index()
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             var jsonContent = await _client.GetAsync("api/APICustomers/get-Cus");
             var jsonData = await jsonContent.Content.ReadAsStringAsync();
 
             var model = JsonConvert.DeserializeObject<List<Customers>>(jsonData);
 
-            ViewData["address"] = new SelectList(_context.Address, "AddressId", "City");
             return View(model);
         }
 
         // GET: Admin/Customers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             if (id == null || _context.Customers == null)
             {
                 return NotFound();
@@ -57,20 +60,12 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         // GET: Admin/Customers/Create
         public async Task<IActionResult> Create()
         {
-            var responseProductType = await _client.GetAsync("api/APICustomers/get-Cus");
-            var json = await responseProductType.Content.ReadAsStringAsync();
-            var model = JsonConvert.DeserializeObject<IEnumerable<Address>>(json);
-            var data = model.Select(e => new SelectListItem
-            {
-                Text = e.City,
-                Value = e.AddressId.ToString()
-            }).AsEnumerable();
-
-            ViewData["addresses"] = data;
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "City");
             return View();
         }
         [HttpPost]
-        
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Customers customers)
         {
             if (ModelState.IsValid)
@@ -80,41 +75,28 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
                 var byContent = new ByteArrayContent(buffer);
                 byContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 await _client.PostAsync("api/APICustomers/add-customer", byContent);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
-
-            var responseAddress = await _client.GetAsync("api/APICustomers/get-Cus");
-            var json = await responseAddress.Content.ReadAsStringAsync();
-            var model = JsonConvert.DeserializeObject<IEnumerable<Address>>(json);
-            var data = model.Select(e => new SelectListItem
-            {
-                Text = e.City,
-                Value = e.AddressId.ToString()
-            }).AsEnumerable();
-
-            ViewData["addresses"] = data;
-
+            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "City", customers.AddressId);
             return View(customers);
         }
 
         // GET: Admin/Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             if (id == null || _context.Customers == null)
             {
                 return NotFound();
             }
-            var responseAddress = await _client.GetAsync("api/APICustomers/get-Cus");
-            var json = await responseAddress.Content.ReadAsStringAsync();
-            var model = JsonConvert.DeserializeObject<IEnumerable<Address>>(json);
-            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "City");
-
+            
             var customers = await _context.Customers.FindAsync(id);
             if (customers == null)
             {
                 return NotFound();
             }
-            
+            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "City");
             return View(customers);
         }
 
@@ -127,11 +109,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
             {
                 return NotFound();
             }
-            var responseAddress = await _client.GetAsync("api/APICustomers/get-Cus");
-            var json = await responseAddress.Content.ReadAsStringAsync();
-            var model = JsonConvert.DeserializeObject<IEnumerable<Address>>(json);
-            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "City");
-
+            
             if (ModelState.IsValid)
             {
                 try
@@ -152,7 +130,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "AddressId", customers.AddressId);
+            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "City", customers.AddressId);
             return View(customers);
         }
 
@@ -164,7 +142,6 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
                 return NotFound();
             }
 
-            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "City");
             var customers = await _context.Customers
                 .Include(c => c.Address)
                 .FirstOrDefaultAsync(m => m.CustomerId == id);
@@ -185,12 +162,8 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
             {
                 return Problem("Entity set 'DBContext.Customers'  is null.");
             }
-            var customers = await _context.Customers.FindAsync(id);
-            if (customers != null)
-            {
-                _context.Customers.Remove(customers);
-            }
-            
+
+            await _client.DeleteAsync($"api/APICustomers/{id}");
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

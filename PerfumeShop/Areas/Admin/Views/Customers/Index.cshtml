@@ -86,7 +86,7 @@
                 @Html.Raw(item.Status == 1 ? "Hoạt Động" : "Không Hoạt Động")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Address.City)
+                @Html.DisplayFor(modelItem => item.AddressId)
             </td>
             <td>
                 <a class="btn btn-primary btn-tone m-r-5" asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> 
