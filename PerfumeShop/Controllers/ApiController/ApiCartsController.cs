@@ -28,7 +28,7 @@ namespace PerfumeShop.Controllers.ApiController
             var product = await _context.Products.FindAsync(id);
             var cart = await _context.Carts.
                 Include(c => c.CartDetails)
-                .FirstOrDefaultAsync(c=> c.CustomerId == Convert.ToInt32(user));
+                .FirstOrDefaultAsync(c=> c.CustomerId == Convert.ToInt32(user) && !c.Status);
             var listShipper = _context.Shippers.Where(c => c.Status == 1).ToList();
             if (cart == null)
                 cart = new Carts();
@@ -54,8 +54,8 @@ namespace PerfumeShop.Controllers.ApiController
                     new CartDetails {ProductId = product.ProdcutId, Payment = product.Price, Amount = 1}
                 };
                 cart.Total = product.Price;
-                _context.Carts.Update(cart);
                 await _context.Carts.AddAsync(cart);
+                //_context.Carts.Update(cart);
                 await _context.SaveChangesAsync();
                 return NoContent();
             }
@@ -148,6 +148,36 @@ namespace PerfumeShop.Controllers.ApiController
             _context.CartDetails.Update(item);
             _context.Carts.Update(cart);
             await _context.SaveChangesAsync();
+            return NoContent();
+        }
+        [HttpPatch]
+        [Route("{customerId}")]
+        public async Task<IActionResult> CheckOut([FromRoute] string customerId)
+        {
+            var cart = await _context.Carts
+                .Include(e => e.CartDetails)
+                .FirstOrDefaultAsync(e => !e.Status && e.CustomerId == Convert.ToInt32(customerId));
+            if (cart == null || cart.CartDetails == null)
+            {
+                return BadRequest();
+            }
+
+            cart.Status = true;
+            foreach (var x in cart.CartDetails)
+            {
+                var product = await _context.Products.FindAsync(x.ProductId);
+
+                if (product == null)
+                    return BadRequest();
+
+                product.Amount -= x.Amount;
+
+                _context.Products.Update(product);
+            }
+
+            _context.Carts.Update(cart);
+            await _context.SaveChangesAsync();
+
             return NoContent();
         }
     }

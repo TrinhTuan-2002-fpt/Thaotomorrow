@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using PerfumeShop.Helpers;
 using PerfumeShop.Models;
 using PerfumeShop.ModelView;
 
@@ -10,9 +11,11 @@ namespace PerfumeShop.Controllers.ViewController
     {
         private readonly DBContext _context;
         private readonly HttpClient _httpClient =new HttpClient();
+ 
         public CartController(DBContext context)
         {
             _context = context;
+    
             _httpClient.BaseAddress = new Uri("https://localhost:7015/");
         }
        
@@ -66,6 +69,13 @@ namespace PerfumeShop.Controllers.ViewController
                 return NotFound();
 
             return RedirectToAction("ViewCart", "Cart");
+        }
+        [Route("checkout")]
+        public async Task<IActionResult> CheckOut()
+        {
+            var CusId = HttpContext.Session.GetString("idcus");
+            _ = await _httpClient.PatchAsync($"api/Cart/{CusId}", null);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

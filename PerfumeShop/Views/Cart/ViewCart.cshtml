@@ -7,95 +7,112 @@
 }
 
 <main class="main-content">
-    <div class="container h-50 mt-10">
-        <div class="row h-50">
-            <div class="col-lg-12">
-                <div class="breadcrumb-item">
-                    <h3 class="">Sản Phẩm Trong Giỏ Hàng</h3>
-                    <ul>
-                        <li>
-                            <a asp-controller="Home" asp-action="Index">Home <i class="pe-7s-angle-right"></i></a>
-                        </li>
-                        <li>Cart</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="cart-area section-space-y-axis-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <form action="javascript:void(0)">
-                        <div class="table-content table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="product_remove">Remove</th>
-                                        <th class="product-thumbnail">Images</th>
-                                        <th class="product-name">Tên Sản Phẩm</th>
-                                        <th class="product-price">Giá</th>
-                                        <th class="quantity">Số Lượng</th>
-                                        <th class="product-subtotal">Tổng Tiền</th>
-                                    </tr>
-                                </thead>
-                                @foreach (var x in Model.Items)
-                                {
-                                    <tbody>
-                                    <td>
-                                        <button type="button" class="btn btn-primary-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <i class="pe-7s-close" title="Remove"></i>
-                                        </button>
+	<div class="container h-50 mt-10">
+		<div class="row h-50">
+			<div class="col-lg-12">
+				<div class="breadcrumb-item">
+					<h3 class="">Sản Phẩm Trong Giỏ Hàng</h3>
+					<ul>
+						<li>
+							<a asp-controller="Home" asp-action="Index">Home <i class="pe-7s-angle-right"></i></a>
+						</li>
+						<li>Cart</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	@{
+		if (Model.Items == null || Model.Items.Count() == 0)
+		{
+			<div>
+				<p class="fw-bold text-center">Giỏ hàng trống</p>
+			</div>
+		}
+		else
+		{
+			<div class="cart-area section-space-y-axis-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<form action="javascript:void(0)">
+						<div class="table-content table-responsive">
+							<table class="table">
+								<thead>
+								<tr>
+									<th class="product_remove">Remove</th>
+									<th class="product-thumbnail">Images</th>
+									<th class="product-name">Tên Sản Phẩm</th>
+									<th class="product-price">Giá</th>
+									<th class="quantity">Số Lượng</th>
+									<th class="product-subtotal">Tổng Tiền</th>
+								</tr>
+								</thead>
+								@foreach (var x in Model.Items)
+								{
+									<tbody>
+									<td>
+										<button type="button" class="btn btn-primary-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
+											<i class="pe-7s-close" title="Remove"></i>
+										</button>
                                         
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Xác Nhận Xoá @x.Name</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <a class="btn btn-danger " asp-controller="Cart" asp-action="Remove" asp-route-id="@x.ProductId" asp-route-idcart="@Model.Id">OK</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <img src="~/Images/ImgProduct/Chanel/@x.Image" class="img-thumbnail" width="200px" height="200px" />
-                                    </td>
-                                    <td>@x.Name</td>
-                                    <td>@x.Price.ToString("C",CultureInfo.GetCultureInfo("vi-VN"))</td>
-                                    <td class="quantity">
-                                        <div>
-                                            <a class="btn btn-primary-hover fw-bold" asp-controller="Cart"
-                                               asp-action="Reduce" asp-route-id="@x.ProductId" asp-route-idcart="@Model.Id">-</a>
-                                            <input disabled value="@x.Quantity" min="0" max="@x.Max" type="number" />
-                                            <a class="btn btn-primary-hover fw-bold" asp-controller="Cart"
-                                               asp-action="Increase" asp-route-id="@x.ProductId" asp-route-idcart="@Model.Id">+</a>
-                                        </div>
-                                    </td>
-                                    <td>@x.Total.ToString("C",CultureInfo.GetCultureInfo("vi-VN"))</td>
-                                    </tbody>
-                                }
-                            </table>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-5 ml-auto">
-                                <div class="cart-page-total">
-                                    <h2>Thanh Toán Hóa Đơn</h2>
-                                    <ul>
-                                        <li>Tổng Tiền: @Model.Total.ToString("C",CultureInfo.GetCultureInfo("vi-VN"))</li>
-                                    </ul>
-                                    <button type="button" class="btn btn-primary-hover mt-2">Thanh Toán</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+										<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">Xác Nhận Xoá @x.Name</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+														<a class="btn btn-danger " asp-controller="Cart" asp-action="Remove" asp-route-id="@x.ProductId" asp-route-idcart="@Model.Id">OK</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>
+										<img src="~/Images/ImgProduct/Chanel/@x.Image" class="img-thumbnail" width="200px" height="200px" />
+									</td>
+									<td>@x.Name</td>
+									<td>@x.Price.ToString("C",CultureInfo.GetCultureInfo("vi-VN"))</td>
+									<td class="quantity">
+										<div>
+											<a class="btn btn-primary-hover fw-bold" asp-controller="Cart"
+											   asp-action="Reduce" asp-route-id="@x.ProductId" asp-route-idcart="@Model.Id">-</a>
+											<input disabled value="@x.Quantity" min="0" max="@x.Max" type="number" />
+											<a class="btn btn-primary-hover fw-bold" asp-controller="Cart"
+											   asp-action="Increase" asp-route-id="@x.ProductId" asp-route-idcart="@Model.Id">+</a>
+										</div>
+									</td>
+									<td>@x.Total.ToString("C",CultureInfo.GetCultureInfo("vi-VN"))</td>
+									</tbody>
+									
+								}
+							</table>
+						</div>
+						<div class="row">
+							<div class="col-md-5 ml-auto">
+								<div class="cart-page-total">
+									<h2>Thanh Toán Hóa Đơn</h2>
+									<ul>
+										<li>Tổng Tiền: @Model.Total.ToString("C",CultureInfo.GetCultureInfo("vi-VN"))</li>
+									</ul>
+									<a onclick="notify()" class="btn btn-primary-hover mt-2" asp-controller="Cart" asp-action="CheckOut" asp-route-customerId="@Model.CustomerId">Thanh Toán</a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+		}
+	}
+	
 </main>
+<script type="text/javascript">
+	var notify = () => {
+		alert("Thanh toán thành công");
+	}
+</script>

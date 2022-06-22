@@ -13,13 +13,19 @@ public class HomeController : Controller
         _logger = logger;
         _context = context;
     }
-    public IActionResult Index()
+    public IActionResult Index(string search)
     {
+        var searchs = from x in _context.Products
+            select x;
+        if (!String.IsNullOrEmpty(search))
+        {
+            searchs = searchs.Where(c => c.Name.Contains(search));
+        }
         ViewData["name"] = HttpContext.Session.GetString("name");
         ViewData["idCus"] = HttpContext.Session.GetString("idcus");
         ViewData["ProductType"] = _context.ProductTypes.ToList();
         ViewData["Product"] = _context.Products.ToList();
-        return View(_context.Products);
+        return View(searchs);
     }
     public IActionResult Contact()
     {

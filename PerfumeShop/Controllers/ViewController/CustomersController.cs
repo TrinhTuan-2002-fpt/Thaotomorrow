@@ -65,7 +65,7 @@ namespace PerfumeShop.Controllers.ViewController
 
         public IActionResult Logout()
         {
-            HttpContext.Session.Remove("name");
+            HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
     }

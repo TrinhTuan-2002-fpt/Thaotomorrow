@@ -4,6 +4,7 @@ public class CartModel
 {
     public int Id { get; set; }
     public double Total { get; set; }
+    public int CustomerId { get; set; }
     public IEnumerable<CartItemModel>? Items { get; set; }
 }
 
