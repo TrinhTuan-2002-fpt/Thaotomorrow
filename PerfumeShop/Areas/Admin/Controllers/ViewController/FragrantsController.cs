@@ -20,6 +20,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
 
         public async Task<IActionResult> Index()
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
             var jsonContent = await _client.GetAsync("api/ApiFragrants/get-Fragrants");
             var jsonData = await jsonContent.Content.ReadAsStringAsync();
             var model = JsonConvert.DeserializeObject<List<Fragrant>>(jsonData);
@@ -28,6 +29,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
 
         public async Task<IActionResult> Details(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
             if (id == null || _context.Fragrant == null)
             {
                 return NotFound();
@@ -48,11 +50,18 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
 
         public IActionResult Create()
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> Create(Fragrant fragrant)
         {
+            var muihuong = await _context.Fragrant.Where(c => c.Name == fragrant.Name).FirstOrDefaultAsync();
+            if (muihuong != null)
+            {
+                ViewData["Name"] = muihuong.Name + " Đã có trong hệ thống";
+                return View();
+            }
             if (ModelState.IsValid)
             {
                 var myContent = JsonConvert.SerializeObject(fragrant);
@@ -69,6 +78,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         // GET: Admin/ProductType/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
             if (id == null || _context.Fragrant == null)
             {
                 return NotFound();
@@ -116,6 +126,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
 
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
             if (id == null || _context.Fragrant == null)
             {
                 return NotFound();

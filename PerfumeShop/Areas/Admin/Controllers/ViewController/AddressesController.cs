@@ -64,6 +64,11 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         [HttpPost]
         public async Task<IActionResult> Create(Address address)
         {
+            var add = await _context.Address.Where(c => c.City == address.City).FirstOrDefaultAsync();
+            if (add != null)
+            {
+                ViewData["Add"] = add.City + " Địa chỉ đã có trong hệ thống";
+            }
             if (ModelState.IsValid)
             {
                 var myContent = JsonConvert.SerializeObject(address);

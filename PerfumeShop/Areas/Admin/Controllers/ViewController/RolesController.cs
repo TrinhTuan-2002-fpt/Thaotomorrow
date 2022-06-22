@@ -71,6 +71,12 @@ namespace PerfumeShop.Areas.Admin.ControllersView
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Roles roles)
         {
+            var acc = await _context.Roles.Where(c => c.Name == roles.Name).FirstOrDefaultAsync();
+            if (acc != null)
+            {
+                ViewData["Name"] = acc.Name + " Đã có trong hệ thống";
+                return View();
+            }
             if (ModelState.IsValid)
             {
                 var myContent = JsonConvert.SerializeObject(roles);

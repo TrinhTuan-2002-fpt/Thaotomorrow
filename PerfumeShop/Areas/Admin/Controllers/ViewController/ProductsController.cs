@@ -23,6 +23,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         // GET: Admin/Accounts
         public async Task<IActionResult> Index()
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
             var jsonConnect = client.GetAsync("api/ApiProducts/Get-All").Result;
             string jsonData = jsonConnect.Content.ReadAsStringAsync().Result;
 
@@ -35,6 +36,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         }
         public async Task<IActionResult> Details(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
             if (id == null || _context.Products == null)
             {
                 return NotFound();
@@ -52,6 +54,8 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         }
         public async Task<IActionResult> Create()
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
+
             var responseProductType = await client.GetAsync("api/APIProductTypes/getSP");
             var json = await responseProductType.Content.ReadAsStringAsync();
             var model = JsonConvert.DeserializeObject<IEnumerable<ProductTypes>>(json);
@@ -68,7 +72,12 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         [HttpPost]
         public async Task<IActionResult> Create(Products products)
         {
-
+            var acc = await _context.Products.Where(c => c.Name == products.Name).FirstOrDefaultAsync();
+            if (acc != null)
+            {
+                ViewData["Name"] = acc.Name + " Đã có trong hệ thống";
+                return View();
+            }
             if (ModelState.IsValid)
             {
                 var myContent = JsonConvert.SerializeObject(products);
@@ -96,7 +105,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         }
         public async Task<IActionResult> Edit(int? id)
         {
-           
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
             if (id == null || _context.Products == null)
             {
                 return NotFound();
@@ -155,6 +164,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
 
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
             if (id == null || _context.Products== null)
             {
                 return NotFound();

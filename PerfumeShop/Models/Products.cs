@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PerfumeShop.Models
 {
@@ -13,6 +14,9 @@ namespace PerfumeShop.Models
         public double? Discount { get; set; }
         public int Amount { get; set; }
         public string Madein { get; set; }
+
+        [RegularExpression(@"^[0-9-+\s]+$",
+            ErrorMessage = "Không Được Nhập Chữ")]
         public string DebutYear { get; set; }
         public string? Note { get; set; }
         public int? Status { get; set; }

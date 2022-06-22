@@ -45,6 +45,12 @@ namespace PerfumeShop.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Shippers shippers)
         {
+            var acc = await _context.Shippers.Where(c => c.PhoneNumber == shippers.PhoneNumber).FirstOrDefaultAsync();
+            if (acc != null)
+            {
+                ViewData["Phone"] = acc.PhoneNumber + " Đã có trong hệ thống";
+                return View();
+            }
             if (!ModelState.IsValid)
             {
                 return View();

@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PerfumeShop.Models;
+using PerfumeShop.ModelView;
 
 namespace PerfumeShop.Controllers;
 
@@ -8,10 +10,12 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly DBContext _context;
+    private readonly HttpClient _httpClient = new HttpClient();
     public HomeController(ILogger<HomeController> logger, DBContext context)
     {
         _logger = logger;
         _context = context;
+        _httpClient.BaseAddress = new Uri("https://localhost:7015/");
     }
     public IActionResult Index(string search)
     {
