@@ -33,7 +33,8 @@ namespace PerfumeShop.Controllers.ViewController
             var CusId = HttpContext.Session.GetString("idCus");
             if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                 return NotFound();
-            return RedirectToAction("ViewCart", "Cart");
+            //return RedirectToAction("ViewCart", "Cart");
+            return RedirectToAction("Index", "Home");
         }
         [Route("remove/{id}")]
         public async Task<IActionResult> Remove(int idcart,int id)

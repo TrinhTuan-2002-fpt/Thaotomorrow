@@ -74,7 +74,7 @@
                                                     </a>
                                                     <div class="product-add-action">
                                                         <ul>
-                                                            @if (@user == null)
+                                                            @if (user == null)
                                                             {
                                                                 <li>
                                                                     <div class="modal-dialog">
@@ -89,7 +89,7 @@
                                                                     
                                                                 </li>
                                                             }
-                                                            else
+                                                            @if(item.Amount > 0)
                                                             {
                                                                 <li onclick="CheckAdd()">
                                                                     <a asp-controller="Cart" asp-action="AddtoCart" asp-route-id="@item.ProdcutId" asp-route-user="@user">
@@ -97,8 +97,12 @@
                                                                     </a>
                                                                 </li>
                                                             }
+                                                            else
+                                                            {
+                                                                <ul><li><a>Hết</a></li></ul>
+                                                            }
                                                         </ul>
-                                                    </div>
+                                                    </div>  
                                                 </div>
                                                 <div class="product-content">
                                                     <a class="product-name">@item.Name</a>
