@@ -1,6 +1,10 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using PerfumeShop.ModelView
+@{
     var Name = ViewData["name"] as string;
     var user = ViewData["idCus"] as string;
+    //var abc = ViewData["Cart"] as CartModel;
+
 }
 
 <header class="main-header_area position-relative">
@@ -109,6 +113,27 @@
                     <div class="minicart-heading">
                         <h4 class="mb-0">Giỏ Hàng Của Tôi</h4>
                         <a href="#" class="button-close"><i class="pe-7s-close"></i></a>
+                        @* @foreach (var x in abc.Items) *@
+                        @* { *@
+                        @*     <ul class="minicart-list mt-3"> *@
+                        @*         <li class="minicart-product"> *@
+                        @*             <a class="product-item_remove" asp-controller="" asp-action="" asp-route-id=""> *@
+                        @*                 <i class="pe-7s-close"></i> *@
+                        @*             </a> *@
+                        @*             <a href="" class="product-item_img"> *@
+                        @*                 <img class="img-full" src="Images/ImgProduct/Chanel/@x.Image." alt="Product Image"> *@
+                        @*             </a> *@
+                        @*             <div class="product-item_content"> *@
+                        @*                 <a class="product-item_title" href=""> *@
+                        @*                     <h5 class="text-dark">@x.Name</h5> *@
+                        @*                 </a> *@
+                        @*                 <span class="product-item_quantity"> *@
+                        @*                     <h6 class="text-danger">Giá: $@x.Price</h6> *@
+                        @*                 </span> *@
+                        @*             </div> *@
+                        @*         </li> *@
+                        @*     </ul> *@
+                        @* } *@
                     </div>
                 </div>
                 <div class="group-btn_wrap d-grid gap-2">

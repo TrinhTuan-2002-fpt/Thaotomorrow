@@ -4,6 +4,7 @@
     ViewData["Title"] = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     var types = ViewData["types"] as IEnumerable<SelectListItem>;
+    var name = ViewData["Name"] as string;
 }
 
 <h1>Create</h1>
@@ -15,8 +16,12 @@
         <form asp-controller="Products" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                @if (name != null)
+                {
+                    <label class="text-danger" >@name</label>
+                }
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control"/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group form-check">

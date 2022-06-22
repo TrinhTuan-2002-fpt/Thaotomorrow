@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using PerfumeShop.Models;
+using PerfumeShop.ModelView;
 
 namespace PerfumeShop.Controllers.ViewController
 {
@@ -38,6 +39,7 @@ namespace PerfumeShop.Controllers.ViewController
                     HttpContext.Session.SetString("password", password);
                     HttpContext.Session.SetString("name", customer.Name);
                     HttpContext.Session.SetString("idcus", customer.CustomerId.ToString());
+
                     return RedirectToAction("Index", "Home");
                 }
 

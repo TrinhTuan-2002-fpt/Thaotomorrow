@@ -68,6 +68,13 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Customers customers)
         {
+            var acc = await _context.Customers.Where(c => c.Email == customers.Email || c.PhoneNumber == customers.PhoneNumber).FirstOrDefaultAsync();
+            if (acc != null)
+            {
+                ViewData["Email"] = acc.Email + " Đã có trong hệ thống";
+                ViewData["Phone"] = acc.PhoneNumber + " Đã có trong hệ thống";
+                return View();
+            }
             if (ModelState.IsValid)
             {
                 var myContent = JsonConvert.SerializeObject(customers);
@@ -137,6 +144,7 @@ namespace PerfumeShop.Areas.Admin.Controllers.ViewController
         // GET: Admin/Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewData["Email"] = HttpContext.Session.GetString("Email");
             if (id == null || _context.Customers == null)
             {
                 return NotFound();

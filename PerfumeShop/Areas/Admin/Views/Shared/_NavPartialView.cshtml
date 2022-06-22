@@ -1,5 +1,7 @@
 ﻿@{
-    <div class="side-nav">
+    var name = ViewData["Email"] as string;
+}
+<div class="side-nav">
     <div class="side-nav-inner">
         <ul class="side-nav-menu scrollable">
             <li class="nav-item dropdown open">
@@ -21,15 +23,19 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
-                        <a asp-area="Admin" asp-controller="Accounts" asp-action="Index">Danh sách tài Khoản</a>
-                    </li>
-                    <li>
-                        <a asp-area="Admin" asp-controller="Roles" asp-action="Index">Loại tài khoản</a>
-                    </li>
-                    <li>
-                        <a>Lọc tài khoản</a>
-                    </li>
+                    @if (name != null)
+                    {
+                        <li>
+                            <a asp-area="Admin" asp-controller="Accounts" asp-action="Index">Danh sách tài Khoản</a>
+                        </li>
+                        <li>
+                            <a asp-area="Admin" asp-controller="Roles" asp-action="Index">Loại tài khoản</a>
+                        </li>
+                        <li>
+                            <a>Lọc tài khoản</a>
+                        </li>
+                    }
+                    
                 </ul>
             </li>
             <li class="nav-item dropdown">
@@ -43,18 +49,21 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
-                        <a  asp-controller="Products" asp-action="Index">Danh sách sản phẩm</a>
-                    </li>
-                    <li>
-                        <a asp-controller="ProductType" asp-action="Index">Loại sản phẩm</a>
-                    </li>
-                    <li>
-                        <a>Lọc Sản Phẩm</a>
-                    </li>
-                    <li>
-                        <a asp-controller="Fragrants" asp-action="Index">Danh sách mùi hương</a>
-                    </li>
+                    @if (name != null)
+                    {
+                        <li>
+                            <a asp-controller="Products" asp-action="Index">Danh sách sản phẩm</a>
+                        </li>
+                        <li>
+                            <a asp-controller="ProductType" asp-action="Index">Loại sản phẩm</a>
+                        </li>
+                        <li>
+                            <a>Lọc Sản Phẩm</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Fragrants" asp-action="Index">Danh sách mùi hương</a>
+                        </li>
+                    }
                 </ul>
             </li>
             <li class="nav-item dropdown">
@@ -68,15 +77,18 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
-                        <a asp-area="Admin" asp-controller="Customers" asp-action="Index">Danh sách khách hàng</a>
-                    </li>
-                    <li>
-                        <a>Lọc khách Hàng</a>
-                    </li>
-                    <li>
-                        <a asp-area="Admin" asp-controller="Addresses" asp-action="Index">Tỉnh Thành</a>
-                    </li>
+                    @if (name != null)
+                    {
+                        <li>
+                            <a asp-area="Admin" asp-controller="Customers" asp-action="Index">Danh sách khách hàng</a>
+                        </li>
+                        <li>
+                            <a>Lọc khách Hàng</a>
+                        </li>
+                        <li>
+                            <a asp-area="Admin" asp-controller="Addresses" asp-action="Index">Tỉnh Thành</a>
+                        </li>
+                    }
                 </ul>
             </li>
             <li class="nav-item dropdown">
@@ -90,9 +102,12 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
-                        <a asp-area="Admin" asp-controller="Shippers" asp-action="Index">Danh sách Shipper</a>
-                    </li>
+                    @if (name != null)
+                    {
+                        <li>
+                            <a asp-area="Admin" asp-controller="Shippers" asp-action="Index">Danh sách Shipper</a>
+                        </li>
+                    }
                 </ul>
             </li>
             <li class="nav-item dropdown">
@@ -106,15 +121,17 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
-                        <a>Danh sách đơn hàng</a>
-                    </li>
-                    <li>
-                        <a>Doanh thu</a>
-                    </li>
+                    @if (name != null)
+                    {
+                        <li>
+                            <a>Danh sách đơn hàng</a>
+                        </li>
+                        <li>
+                            <a>Doanh thu</a>
+                        </li>
+                    }
                 </ul>
             </li>
         </ul>
     </div>
 </div>
-}

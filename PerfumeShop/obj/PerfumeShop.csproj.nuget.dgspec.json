@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\CSharp5\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {}
+    "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\CSharp5\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {
+    "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\CSharp5\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+        "projectUniqueName": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
         "projectName": "PerfumeShop",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\CSharp5\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+        "projectPath": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\CSharp5\\Thaotomorrow\\PerfumeShop\\obj\\",
+        "outputPath": "E:\\NET\\C#5\\NET105\\Thaotomorrow\\PerfumeShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -95,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
