@@ -29,15 +29,14 @@ namespace PerfumeShop.Controllers.ApiController
             var cart = await _context.Carts.Include(c => c.CartDetails)
                 .ThenInclude(c=>c.Products)
                 .FirstOrDefaultAsync(c=>c.CustomerId == Convert.ToInt32(CusId) && !c.Status);
-            if (cart == null) return Ok(new Carts());
-            var result = new CartModel
+             if (cart == null) return Ok(new Carts());
+             var result = new CartModel
             {
                 Id = cart.CartId,
                 CustomerId = cart.CustomerId,
                 Total = cart.Total,
                 Items = cart.CartDetails.Select(e => new CartItemModel
                 {
-                    Id = e.CartId,
                     ProductId = e.ProductId,
                     Total = e.Payment,
                     Image = e.Products.Img,
@@ -47,7 +46,6 @@ namespace PerfumeShop.Controllers.ApiController
                     Max = e.Products.Amount
                 })
             };
-            
             return Ok(result);
         }
     }

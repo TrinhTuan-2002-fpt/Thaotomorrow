@@ -14,6 +14,7 @@ namespace PerfumeShop.Controllers.ApiController
     public class ApiCartsController : ControllerBase
     {
         private readonly DBContext _context;
+        private Random _radom = new Random();
 
         public ApiCartsController(DBContext context)
         {
@@ -24,16 +25,34 @@ namespace PerfumeShop.Controllers.ApiController
         [Route("{user}/items/{id:int}")]
         public async Task<ActionResult<Carts>> PostCarts([FromRoute] string user, int id)
         {
-            var cus = await _context.Customers.FindAsync(Convert.ToInt32(user));
             var product = await _context.Products.FindAsync(id);
             var cart = await _context.Carts.
                 Include(c => c.CartDetails)
                 .FirstOrDefaultAsync(c=> c.CustomerId == Convert.ToInt32(user) && !c.Status);
             var listShipper = _context.Shippers.Where(c => c.Status == 1).ToList();
+            var ShipId = _radom.Next(listShipper.Count);
             if (cart == null)
                 cart = new Carts();
             if (product == null) return BadRequest();
             var Cartdetail = cart.CartDetails?.FirstOrDefault(c => c.ProductId == id);
+            if (cart.CartId == 0)
+            {
+
+                cart.Oderdate = DateTime.Now;
+                cart.Shipdate = DateTime.Now.AddDays(5);
+                cart.ShipperId = listShipper[ShipId].ShipperId;
+                cart.CustomerId = Convert.ToInt32(user);
+                cart.CartDetails = new List<CartDetails>()
+                {
+                    new CartDetails {ProductId = product.ProdcutId, Payment = product.Price, Amount = 1}
+                };
+                cart.Total = product.Price;
+                await _context.Carts.AddAsync(cart);
+                //_context.Carts.Update(cart);
+                
+                await _context.SaveChangesAsync();
+                return NoContent();
+            }
             if (Cartdetail != null)
             {
                 Cartdetail.Amount++;
@@ -43,22 +62,7 @@ namespace PerfumeShop.Controllers.ApiController
                 await _context.SaveChangesAsync();
                 return NoContent();
             }
-            if (cart.CartId == 0)
-            {
-                cart.Oderdate = DateTime.Now;
-                cart.Shipdate = DateTime.Now.AddDays(5);
-                cart.ShipperId = Random.Shared.Next(listShipper.Count);
-                cart.CustomerId = cus.CustomerId;
-                cart.CartDetails = new List<CartDetails>()
-                {
-                    new CartDetails {ProductId = product.ProdcutId, Payment = product.Price, Amount = 1}
-                };
-                cart.Total = product.Price;
-                await _context.Carts.AddAsync(cart);
-                //_context.Carts.Update(cart);
-                await _context.SaveChangesAsync();
-                return NoContent();
-            }
+            
 
             var Detail = new CartDetails {CartId = cart.CartId, Payment = product.Price, Amount = 1, ProductId = product.ProdcutId};
             cart.Total += Detail.Payment;
@@ -93,7 +97,7 @@ namespace PerfumeShop.Controllers.ApiController
         [Route("{idcart}/items/{id:int}/reduce")]
         public async Task<IActionResult> ReduceQuantity([FromRoute] int idcart, int id)
         {
-            var item = await _context.CartDetails.Where(c => c.ProductId == id).FirstOrDefaultAsync();
+            var item = await _context.CartDetails.FirstOrDefaultAsync(c => c.CartId == idcart && c.ProductId == id);
 
             if (item == null)
                 return BadRequest();
@@ -122,7 +126,7 @@ namespace PerfumeShop.Controllers.ApiController
         [Route("{idcart}/items/{id:int}/increase")]
         public async Task<IActionResult> IncreaseQuantity([FromRoute] int idcart, int id)
         {
-            var item = await _context.CartDetails.Where(c => c.ProductId == id).FirstOrDefaultAsync();
+            var item = await _context.CartDetails.FirstOrDefaultAsync(c=>c.CartId == idcart && c.ProductId == id);
 
             if (item == null)
                 return BadRequest();
@@ -138,10 +142,10 @@ namespace PerfumeShop.Controllers.ApiController
             if (product == null)
                 return BadRequest();
 
-            item.Amount++;
-
-            if (item.Amount > product.Amount)
+            
+            if (item.Amount == product.Amount)
                 return NoContent();
+            item.Amount++;
 
             item.Payment += product.Price;
             cart.Total += product.Price;

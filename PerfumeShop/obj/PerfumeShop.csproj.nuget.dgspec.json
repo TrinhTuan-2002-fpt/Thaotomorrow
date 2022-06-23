@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {}
+    "E:\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {
+    "E:\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+        "projectUniqueName": "E:\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
         "projectName": "PerfumeShop",
-        "projectPath": "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
-        "packagesPath": "C:\\Users\\LuTrongTuan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LuTrongTuan\\Desktop\\IT16302_C#5_API\\Thaotomorrow\\PerfumeShop\\obj\\",
+        "projectPath": "E:\\Thaotomorrow\\PerfumeShop\\PerfumeShop.csproj",
+        "packagesPath": "C:\\Users\\trinh\\.nuget\\packages\\",
+        "outputPath": "E:\\Thaotomorrow\\PerfumeShop\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\LuTrongTuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\trinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

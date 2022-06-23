@@ -89,18 +89,22 @@
                                                                     
                                                                 </li>
                                                             }
-                                                            @if(item.Amount > 0)
-                                                            {
-                                                                <li onclick="CheckAdd()">
-                                                                    <a asp-controller="Cart" asp-action="AddtoCart" asp-route-id="@item.ProdcutId" asp-route-user="@user">
-                                                                        <i class="pe-7s-cart"></i>
-                                                                    </a>
-                                                                </li>
-                                                            }
                                                             else
                                                             {
-                                                                <ul><li><a>Hết</a></li></ul>
+                                                                @if(item.Amount > 0)
+                                                                {
+                                                                    <li onclick="CheckAdd()">
+                                                                        <a asp-controller="Cart" asp-action="AddtoCart" asp-route-id="@item.ProdcutId" asp-route-user="@user">
+                                                                            <i class="pe-7s-cart"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <ul><li><a>Hết</a></li></ul>
+                                                                }
                                                             }
+                                                            
                                                         </ul>
                                                     </div>  
                                                 </div>
